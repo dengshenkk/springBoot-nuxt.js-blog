@@ -46,6 +46,6 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public List<Category> queryAllCategory() {
-        return categoryDao.findAllByIsDeleteIsNot(0);
+        return categoryDao.findAllByIsDeleteIsNot(1);
     }
 }

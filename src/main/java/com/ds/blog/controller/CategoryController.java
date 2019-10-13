@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/category")
 @EnableSwagger2
+@CrossOrigin
 public class CategoryController {
 
     @Autowired

@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/comment")
 @EnableSwagger2
+@CrossOrigin
 public class CommentController {
 
     @Autowired

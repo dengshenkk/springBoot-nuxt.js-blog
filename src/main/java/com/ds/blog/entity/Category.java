@@ -15,7 +15,7 @@ public class Category {
     private String id;
     private String categoryName;
     private String categoryType;
-    private Integer isDelete;
+    private Integer isDelete = 0;
     private Date createTime;
     private Date updateTime;
 }

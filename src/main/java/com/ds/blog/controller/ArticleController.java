@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("article")
 @EnableSwagger2
+@CrossOrigin
 public class ArticleController {
 
     @Autowired
