@@ -43,4 +43,10 @@ public class CommentController {
         List<Comment> commentList = commentService.queryComment(articleId);
         return ResultVOUtils.success(commentList);
     }
+
+    @GetMapping("/queryCommentAll")
+    public ResultVO queryComment() {
+        List<Comment> commentList = commentService.queryCommentAll();
+        return ResultVOUtils.success(commentList);
+    }
 }

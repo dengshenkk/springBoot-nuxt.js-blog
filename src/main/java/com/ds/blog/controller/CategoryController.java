@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.List;
-
 @RestController
 @RequestMapping("/category")
 @EnableSwagger2
@@ -20,7 +19,8 @@ public class CategoryController {
     private CategoryServiceImpl categoryService;
 
     @PostMapping("/createCategory")
-    public ResultVO createCategory(Category category) {
+    public ResultVO createCategory(@RequestBody Category category) {
+        System.out.println(category.toString());
         Category serviceCategory = categoryService.createCategory(category);
         return ResultVOUtils.success(serviceCategory);
     }

@@ -1,3 +1,4 @@
+// import 'element-ui/lib/theme-chalk/index.css'
 module.exports = {
   /*
   ** Headers of the page
@@ -13,16 +14,30 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+  modules: [
+    '@nuxtjs/proxy'
+  ],
+  proxy: {
+    '/api': {
+      target: 'http://localhost:9999',
+      pathRewrite: {
+        '^/api' : '/'
+      }
+    }
+  },
   // 全局css
   css: ['reset.css','~/assets/css/reset.css'],
   /*
   ** Customize the progress bar color
   */
   loading: { color: '#3B8070' },
+
+  plugins: [ '~/plugins/element-ui'],
   /*
   ** Build configuration
   */
   build: {
+    vendor: ['element-ui'],
     /*
     ** Run ESLint on save
     */

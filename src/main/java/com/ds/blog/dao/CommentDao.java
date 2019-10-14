@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface CommentDao extends JpaRepository<Comment, String> {
     List<Comment> findAllByArticleId(String articleId);
+
+    List<Comment> findAllByIsDeleteEquals(Integer isDelete);
 }

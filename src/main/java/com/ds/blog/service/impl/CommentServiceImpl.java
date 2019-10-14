@@ -48,4 +48,9 @@ public class CommentServiceImpl implements CommentService {
         List<Comment> commentList = commentDao.findAllByArticleId(articleId);
         return commentList;
     }
+    @Override
+    public List<Comment> queryCommentAll() {
+        List<Comment> commentList = commentDao.findAllByIsDeleteEquals(0);
+        return commentList;
+    }
 }
