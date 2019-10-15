@@ -28,8 +28,8 @@ public class CommentController {
 
     @DeleteMapping("/deleteComment/{commentId}")
     public ResultVO deleteComment(@PathVariable(value = "commentId") String commentId){
-        Comment comment = commentService.deleteComment(commentId);
-        return ResultVOUtils.success(comment);
+        commentService.deleteComment(commentId);
+        return ResultVOUtils.success(null);
     }
 
     @PostMapping("/updateComment")

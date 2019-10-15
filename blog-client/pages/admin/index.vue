@@ -1,14 +1,17 @@
 <template>
-  <div>
-    <div>/admin</div>
-    <AppLogo></AppLogo>
-  </div>
+  <no-ssr placeholder="loading...">
+    <div>
+      <div>/admin</div>
+      <AppLogo></AppLogo>
+    </div>
+  </no-ssr>
 </template>
 
 <script>
 import AppLogo from '~/components/AppLogo.vue'
 
 export default {
+  layout: 'admin',
   components: {
     AppLogo
   }

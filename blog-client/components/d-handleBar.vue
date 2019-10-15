@@ -1,6 +1,11 @@
 <template>
   <div class="d-handleBar-wrap">
-    <el-row type="flex" justify="space-between">
+    <el-row type="flex" justify="space-between" v-if="isBack">
+      <el-col :span="24" style="display: flex;justify-content: flex-end;">
+        <el-button type="primary" @click="$router.go(-1)">返回</el-button>
+      </el-col>
+    </el-row>
+    <el-row type="flex" justify="space-between" v-else>
       <el-col>
         <el-button type="primary" @click="add">新增</el-button>
       </el-col>
@@ -19,7 +24,12 @@
  */
 export default {
   name: 'd-handleBar',
-  props: {},
+  props: {
+    isBack: {
+      type: Boolean,
+      default: () => false
+    }
+  },
   computed: {},
   data() {
     return {

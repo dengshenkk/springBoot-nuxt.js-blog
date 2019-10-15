@@ -16,8 +16,22 @@ import java.util.List;
 @CrossOrigin
 public class ArticleController {
 
+
+    // TODO 一般方式
+    /**
+     * @ Autowired
+     * private ArticleServiceImpl articleService;
+     */
+
+    // TODO 自动装配编辑器推荐方式
+    // TODO 1. 声明变量
+    private final ArticleServiceImpl articleService;
+
+    // TODO 2. 构造函数注入
     @Autowired
-    private ArticleServiceImpl articleService;
+    public ArticleController(ArticleServiceImpl articleService) {
+        this.articleService = articleService;
+    }
 
     @PostMapping("/createArticle")
     public ResultVO createArticle(@RequestBody Article article) {
@@ -29,7 +43,7 @@ public class ArticleController {
     public ResultVO deleteArticleOne(@PathVariable(value = "articleId") String articleId) {
         Article article = articleService.deleteArticleOne(articleId);
         System.out.println(article);
-        return ResultVOUtils.success(article);
+        return ResultVOUtils.success(null);
     }
 
     @PostMapping("/updateArticle")
@@ -46,7 +60,7 @@ public class ArticleController {
     }
 
     @GetMapping("/queryArticleAll")
-    public ResultVO queryArticle(){
+    public ResultVO queryArticle() {
         List<Article> articleList = articleService.queryArticleAll();
         return ResultVOUtils.success(articleList);
     }

@@ -22,7 +22,7 @@ public class ArticleServiceImplTest {
         article.setTitle("测试标题");
         article.setSubtitle("小标题");
         article.setContent("测试内容");
-        article.setCategory("11");
+        article.setCategoryType("11");
         article.setIsTop(0);
         article.setIsDelete(0);
         Article result = articleService.createArticle(article);
@@ -39,14 +39,13 @@ public class ArticleServiceImplTest {
 
     @Test
     public void updateArticle() {
-        Article article = new Article();
-        article.setId("12345");
-        article.setTitle("测试标题new");
+        Article article = articleService.queryArticleOne("1571152817208266804");
+        article.setTitle("99996666688888");
         article.setSubtitle("小标题new");
         article.setContent("测试内容new");
-        article.setCategory("11");
+        article.setCategoryType("11");
         article.setIsTop(0);
-        Article result = articleService.createArticle(article);
+        Article result = articleService.updateArticle(article);
         Assert.assertNotNull(result);
     }
 

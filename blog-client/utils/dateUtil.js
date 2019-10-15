@@ -1,7 +1,9 @@
 export function formatDate(time, type = 'date') {
+  console.log(type)
   if (!time) {
     return ''
   }
+  let result = null
   let date = new Date(Number(time))
   let Y = date.getFullYear()
   let M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1)
@@ -11,12 +13,17 @@ export function formatDate(time, type = 'date') {
   let s = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds()
   switch (type) {
     case 'date':
-      return `${Y}-${M}-${D}`
+      result = `${Y}-${M}-${D}`
+      break
     case 'time':
-      return `${h}:${m}:${s}`
+      result = `${h}:${m}:${s}`
+      break
     case 'full':
-      return `${Y}-${M}-${D} ${h}:${m}:${s}`
+      result = `${Y}-${M}-${D} ${h}:${m}:${s}`
+      break
     default:
       return `${Y}-${M}-${D}`
   }
+  console.log(result)
+  return result
 }

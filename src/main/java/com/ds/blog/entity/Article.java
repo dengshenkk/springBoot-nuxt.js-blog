@@ -16,9 +16,9 @@ public class Article {
     private String title;
     private String subtitle;
     private String content;
-    private String category;
-    private Integer isTop;
-    private Integer isDelete;
+    private String categoryType;
+    private Integer isTop = 0;
+    private Integer isDelete = 0;
     // TODO 返回类型需要去配置文件里配置Jackson
     private Date createTime;
     private Date updateTime;

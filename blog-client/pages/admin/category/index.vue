@@ -4,23 +4,23 @@
     <el-table
         :data="tableData"
         style="width: 100%">
-      <el-table-column
-          prop="categoryName"
-          label="分类名称"
-          width="180">
+      <el-table-column align="center"
+                       prop="categoryName"
+                       label="分类名称"
+                       width="180">
       </el-table-column>
-      <el-table-column
-          prop="categoryType"
-          label="分类类型"
-          width="180">
+      <el-table-column align="center"
+                       prop="categoryType"
+                       label="分类类型"
+                       width="180">
       </el-table-column>
-      <el-table-column
-          prop="createTime"
-          label="创建时间">
+      <el-table-column align="center"
+                       prop="createTime"
+                       label="创建时间">
       </el-table-column>
-      <el-table-column
-          prop=""
-          label="操作">
+      <el-table-column align="center"
+                       prop=""
+                       label="操作">
         <template slot-scope="scope">
           <el-button type="primary" @click="detail(scope.row)">查看</el-button>
           <el-button type="danger" @click="remove(scope.row)">删除</el-button>
@@ -55,6 +55,7 @@ import {formatDate} from '../../../utils/dateUtil'
 import DHandleBar from '../../../components/d-handleBar'
 
 export default {
+  layout: 'admin',
   name: 'index',
   components: {DHandleBar},
   props: {},
@@ -102,7 +103,7 @@ export default {
       })
     },
     detail() {
-      this.$message.info("wait...")
+      this.$message.info('wait...')
     },
     remove(row) {
       console.log(row)

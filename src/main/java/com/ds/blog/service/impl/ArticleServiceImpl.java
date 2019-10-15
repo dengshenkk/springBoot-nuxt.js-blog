@@ -54,7 +54,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public List<Article> queryArticleByCategory(String categoryType) {
-        return articleDao.findAllByCategoryAndIsDeleteEquals(categoryType, 0);
+        return articleDao.findAllByCategoryTypeAndIsDeleteEquals(categoryType, 0);
     }
 
 

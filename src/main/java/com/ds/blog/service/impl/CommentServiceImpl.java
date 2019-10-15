@@ -33,8 +33,11 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public Comment deleteComment(String commentId) {
         Optional<Comment> optionalComment = commentDao.findById(commentId);
-        optionalComment.get().setIsDelete(1);
-        return commentDao.save(optionalComment.get());
+        if (optionalComment.isPresent()) {
+            optionalComment.get().setIsDelete(1);
+            commentDao.save(optionalComment.get());
+        }
+        return null;
     }
 
     @Override

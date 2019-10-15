@@ -5,13 +5,13 @@ import com.ds.blog.entity.Category;
 import java.util.List;
 
 public interface CategoryService {
-    public Category createCategory(Category category);
+    Category createCategory(Category category);
 
-    public Category deleteCategory(String categoryId);
+    Category deleteCategory(String categoryId);
 
-    public Category updateCategory(Category category);
+    Category updateCategory(Category category);
 
-    public Category queryCategory(String categoryId);
+    Category queryCategory(String categoryId);
 
-    public List<Category> queryAllCategory();
+    List<Category> queryAllCategory();
 }

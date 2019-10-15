@@ -1,9 +1,11 @@
 <template>
   <div>
+    <h1>Index</h1>
     <h1>姓名：{{info.name}}</h1>
     <h2>年龄：{{info.age}}</h2>
     <h2>兴趣：{{info.interest}}</h2>
     <h1>{{category}}</h1>
+    <nuxt-link to="/admin">admin</nuxt-link>
   </div>
 </template>
 <script>

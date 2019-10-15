@@ -8,5 +8,5 @@ import java.util.List;
 public interface ArticleDao extends JpaRepository<Article, String> {
 
     List<Article> findAllByIsDeleteEquals(Integer isDelete);
-    List<Article> findAllByCategoryAndIsDeleteEquals(String categoryType, Integer isDelete);
+    List<Article> findAllByCategoryTypeAndIsDeleteEquals(String categoryType, Integer isDelete);
 }

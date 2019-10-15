@@ -6,15 +6,16 @@ import java.util.List;
 
 public interface ArticleService {
 
-    public Article createArticle(Article article);
+    Article createArticle(Article article);
 
-    public Article deleteArticleOne(String articleId);
+    Article deleteArticleOne(String articleId);
 
-    public Article updateArticle(Article article);
+    Article updateArticle(Article article);
 
-    public Article queryArticleOne(String articleId);
+    Article queryArticleOne(String articleId);
 
-    public List<Article> queryArticleAll();
-    public List<Article> queryArticleByCategory(String categoryType);
+    List<Article> queryArticleAll();
+
+    List<Article> queryArticleByCategory(String categoryType);
 
 }
