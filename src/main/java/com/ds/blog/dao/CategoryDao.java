@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface CategoryDao extends JpaRepository<Category, String> {
     List<Category> findAllByIsDeleteIsNot(Integer isDelete);
+
+    List<Category> findAllByIsDeleteEqualsAndCategoryTypeIn(Integer isDelete, List<String> categoryList);
 }

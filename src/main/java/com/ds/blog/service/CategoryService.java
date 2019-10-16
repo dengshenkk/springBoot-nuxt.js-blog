@@ -14,4 +14,6 @@ public interface CategoryService {
     Category queryCategory(String categoryId);
 
     List<Category> queryAllCategory();
+
+    List<Category> queryAllByCategoryTypeList(List<String> categoryList);
 }

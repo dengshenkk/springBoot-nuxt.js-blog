@@ -30,6 +30,13 @@ export function removeCategory(data) {
   })
 }
 
-
+export function updateCategory(data) {
+  console.log(data)
+  return axios({
+    method: 'post',
+    url: `/category/updateCategory/${data.id}`,
+    data
+  })
+}
 
 

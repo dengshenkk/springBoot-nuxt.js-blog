@@ -17,3 +17,12 @@ export function deleteCommentById(commentId) {
     method: 'delete'
   })
 }
+
+
+export function updateComment(data) {
+  return axios({
+    url: `/comment/updateComment/${data.id}`,
+    method: 'post',
+    data
+  })
+}

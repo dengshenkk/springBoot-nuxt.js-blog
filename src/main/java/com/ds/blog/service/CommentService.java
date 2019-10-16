@@ -12,6 +12,8 @@ public interface CommentService {
 
     Comment updateComment(Comment comment);
 
+    Comment queryCommentById(String commentId);
+
     List<Comment> queryComment(String articleId);
 
     List<Comment> queryCommentAll();

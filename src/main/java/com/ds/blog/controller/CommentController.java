@@ -21,27 +21,49 @@ public class CommentController {
 
     @PostMapping("/createComment")
     public ResultVO craeteComment(Comment comment) {
-        Comment comment1 = commentService.createComment(comment);
-        return ResultVOUtils.success(comment1);
+        try {
+            Comment comment1 = commentService.createComment(comment);
+            return ResultVOUtils.success(comment1);
+        } catch (Exception e) {
+            return ResultVOUtils.error(e.getMessage());
+        }
     }
 
 
     @DeleteMapping("/deleteComment/{commentId}")
-    public ResultVO deleteComment(@PathVariable(value = "commentId") String commentId){
-        commentService.deleteComment(commentId);
-        return ResultVOUtils.success(null);
+    public ResultVO deleteComment(@PathVariable(value = "commentId") String commentId) {
+        try {
+            commentService.deleteComment(commentId);
+            return ResultVOUtils.success(null);
+        } catch (Exception e) {
+            return ResultVOUtils.error(e.getMessage());
+        }
     }
 
-    @PostMapping("/updateComment")
-    public ResultVO updateComment(Comment comment) {
-        Comment updateComment = commentService.updateComment(comment);
-        return ResultVOUtils.success(updateComment);
+    @PostMapping("/updateComment/{commentId}")
+    public ResultVO updateComment(@PathVariable(value = "commentId") String commentId, @RequestBody Comment commentObj) {
+        try {
+            Comment comment = commentService.queryCommentById(commentId);
+            if (comment == null) {
+                return ResultVOUtils.error("该评论Id有误");
+            }
+            System.out.println(commentObj);
+            commentObj.setId(comment.getId());
+            Comment updateComment = commentService.updateComment(commentObj);
+            return ResultVOUtils.success(updateComment);
+        } catch (Exception e) {
+            return ResultVOUtils.error(e.getMessage());
+        }
     }
 
     @GetMapping("/queryComment/{articleId}}")
     public ResultVO queryComment(@PathVariable(value = "articleId") String articleId) {
-        List<Comment> commentList = commentService.queryComment(articleId);
-        return ResultVOUtils.success(commentList);
+        try {
+            List<Comment> commentList = commentService.queryComment(articleId);
+            return ResultVOUtils.success(commentList);
+        } catch (Exception e) {
+            return ResultVOUtils.error(e.getMessage());
+        }
     }
 
     @GetMapping("/queryCommentAll")

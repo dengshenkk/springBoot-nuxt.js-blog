@@ -1,6 +1,6 @@
 <template>
   <div class="index-wrap">
-    <d-handle-bar @add="dialogFormVisible = true"></d-handle-bar>
+    <d-handle-bar @add="add"></d-handle-bar>
     <el-table
         :data="tableData"
         style="width: 100%">
@@ -29,7 +29,7 @@
     </el-table>
 
 
-    <el-dialog title="收货地址" :visible.sync="dialogFormVisible">
+    <el-dialog title="分类" :visible.sync="dialogFormVisible">
       <el-form :model="form">
         <el-form-item label="分类名称">
           <el-input v-model="form.categoryName" autocomplete="off"></el-input>
@@ -50,7 +50,7 @@
  * create by    dengShen
  * createTime   2019/10/14 21:09:42
  */
-import {createCategory, getCategoryList, removeCategory} from '../../../api/category'
+import {createCategory, getCategoryList, removeCategory, updateCategory} from '../../../api/category'
 import {formatDate} from '../../../utils/dateUtil'
 import DHandleBar from '../../../components/d-handleBar'
 
@@ -66,7 +66,8 @@ export default {
       form: {
         categoryName: '',
         categoryType: ''
-      }
+      },
+      status: 'create'
     }
   },
   async asyncData() {
@@ -75,7 +76,7 @@ export default {
       tableData = res.data.data
     })
     tableData.forEach(item => {
-      item.createTime = formatDate(item.createTime)
+      item.createTime = formatDate(item.createTime, 'full')
     })
     return {tableData}
   },
@@ -91,19 +92,32 @@ export default {
         this.tableData = res.data.data
       })
       this.tableData.forEach(item => {
-        item.createTime = formatDate(item.createTime)
+        item.createTime = formatDate(item.createTime, 'full')
       })
     },
-    submit() {
+    async submit() {
       let {categoryName, categoryType} = this.form
-      createCategory({categoryName, categoryType}).then(res => {
-        this.dialogFormVisible = false
-        this.$message.success(res.data.msg)
-        this.init()
-      })
+      if (this.status === 'update' && this.form.id) {
+        await updateCategory({id: this.form.id, categoryName, categoryType}).then(res => {
+          this.$message.success(res.data.msg)
+        })
+      } else {
+        await createCategory({categoryName, categoryType}).then(res => {
+          this.$message.success(res.data.msg)
+        })
+      }
+      this.dialogFormVisible = false
+      this.form = {}
+      this.init()
     },
-    detail() {
-      this.$message.info('wait...')
+    detail(row) {
+      this.form = row
+      this.dialogFormVisible = true
+      this.status = 'update'
+    },
+    add() {
+      this.dialogFormVisible = true
+      this.status = 'create'
     },
     remove(row) {
       console.log(row)

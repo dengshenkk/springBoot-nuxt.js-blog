@@ -42,7 +42,6 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public Comment updateComment(Comment comment) {
-        comment.setIsCheck(0);
         return commentDao.save(comment);
     }
 
@@ -51,9 +50,16 @@ public class CommentServiceImpl implements CommentService {
         List<Comment> commentList = commentDao.findAllByArticleId(articleId);
         return commentList;
     }
+
     @Override
     public List<Comment> queryCommentAll() {
         List<Comment> commentList = commentDao.findAllByIsDeleteEquals(0);
         return commentList;
+    }
+
+    @Override
+    public Comment queryCommentById(String commentId) {
+        Optional<Comment> optionalComment = commentDao.findById(commentId);
+        return optionalComment.orElse(null);
     }
 }

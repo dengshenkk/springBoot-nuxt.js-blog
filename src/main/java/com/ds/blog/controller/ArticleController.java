@@ -35,40 +35,66 @@ public class ArticleController {
 
     @PostMapping("/createArticle")
     public ResultVO createArticle(@RequestBody Article article) {
-        Article serviceArticle = articleService.createArticle(article);
-        return ResultVOUtils.success(serviceArticle);
+        try {
+            Article serviceArticle = articleService.createArticle(article);
+            return ResultVOUtils.success(serviceArticle);
+        } catch (Exception e){
+            return ResultVOUtils.error(e.getMessage());
+        }
     }
 
     @DeleteMapping("/deleteArticleOne/{articleId}")
     public ResultVO deleteArticleOne(@PathVariable(value = "articleId") String articleId) {
-        Article article = articleService.deleteArticleOne(articleId);
-        System.out.println(article);
-        return ResultVOUtils.success(null);
+        try {
+            Article article = articleService.deleteArticleOne(articleId);
+            System.out.println(article);
+            return ResultVOUtils.success(null);
+        } catch (Exception e) {
+            return ResultVOUtils.error(e.getMessage());
+        }
+
+
     }
 
     @PostMapping("/updateArticle")
     public ResultVO updateArticle(Article article) {
 
-        Article article1 = articleService.updateArticle(article);
-        return ResultVOUtils.success(article1);
+        try {
+            Article article1 = articleService.updateArticle(article);
+            return ResultVOUtils.success(article1);
+        } catch (Exception e) {
+            return ResultVOUtils.error(e.getMessage());
+        }
     }
 
     @GetMapping("/queryArticle/{articleId}")
     public ResultVO queryArticle(@PathVariable(value = "articleId") String articleId) {
-        Article article = articleService.queryArticleOne(articleId);
-        return ResultVOUtils.success(article);
+        try {
+            Article article = articleService.queryArticleOne(articleId);
+            return ResultVOUtils.success(article);
+        } catch (Exception e) {
+            return ResultVOUtils.error(e.getMessage());
+        }
     }
 
     @GetMapping("/queryArticleAll")
     public ResultVO queryArticle() {
-        List<Article> articleList = articleService.queryArticleAll();
-        return ResultVOUtils.success(articleList);
+        try {
+            List<Article> articleList = articleService.queryArticleAll();
+            return ResultVOUtils.success(articleList);
+        } catch (Exception e) {
+            return ResultVOUtils.error(e.getMessage());
+        }
     }
 
     @GetMapping("/queryArticleByCategory/{categoryType}")
     public ResultVO queryArticleByCategoryType(@PathVariable(value = "categoryType") String categoryType) {
-        List<Article> articleList = articleService.queryArticleByCategory(categoryType);
-        return ResultVOUtils.success(articleList);
+        try {
+            List<Article> articleList = articleService.queryArticleByCategory(categoryType);
+            return ResultVOUtils.success(articleList);
+        } catch (Exception e) {
+            return ResultVOUtils.error(e.getMessage());
+        }
     }
 
 }
