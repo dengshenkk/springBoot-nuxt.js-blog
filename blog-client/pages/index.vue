@@ -6,6 +6,7 @@
     <h2>兴趣：{{info.interest}}</h2>
     <h1>{{category}}</h1>
     <nuxt-link to="/admin">admin</nuxt-link>
+    <nuxt-link to="/blog">admin</nuxt-link>
   </div>
 </template>
 <script>

@@ -1,5 +1,4 @@
 export function formatDate(time, type = 'date') {
-  console.log(type)
   if (!time) {
     return ''
   }
@@ -24,6 +23,5 @@ export function formatDate(time, type = 'date') {
     default:
       return `${Y}-${M}-${D}`
   }
-  console.log(result)
   return result
 }

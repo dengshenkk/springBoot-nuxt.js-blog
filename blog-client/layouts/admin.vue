@@ -2,6 +2,7 @@
   <div>
     <el-container>
       <el-header style="background-color: pink;">Header</el-header>
+      <!--<d-loading v-model="loading"></d-loading>-->
       <el-container>
         <el-aside width="200px">
           <el-row class="tac">
@@ -19,9 +20,17 @@
 </template>
 <script>
 import DNav from '../components/d-nav'
+import DLoading from '../components/d-loading'
 
 export default {
-  components: {DNav}
+  components: {DLoading, DNav},
+  data() {
+    return {
+    }
+  },
+  mounted() {
+    console.log(this.$store.state.loading)
+  }
 }
 </script>
 

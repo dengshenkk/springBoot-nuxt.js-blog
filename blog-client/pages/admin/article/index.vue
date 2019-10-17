@@ -30,13 +30,16 @@
       <el-table-column align="center"
                        prop="createTime"
                        label="创建时间">
+        <template slot-scope="scoped">
+          <div> {{scoped.row.createTime | filterData('full')}}</div>
+        </template>
       </el-table-column>
       <el-table-column align="center"
                        prop=""
                        label="操作">
         <template slot-scope="scope">
-          <el-button type="primary">查看</el-button>
-          <el-button type="danger" @click="removeArticle(scope.row.id)">删除</el-button>
+          <el-button type="primary" @click="detailArticle(scope.row)">查看</el-button>
+          <el-button type="danger" @click="removeArticle(scope.row)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -47,8 +50,7 @@
  * create by    dengShen
  * createTime   2019/10/14 21:09:42
  */
-import {formatDate} from '../../../utils/dateUtil'
-import {deleteArticle, getArticle} from '../../../api/article'
+import {deleteArticle, getArticleAll} from '../../../api/article'
 import DHandleBar from '../../../components/d-handleBar'
 
 export default {
@@ -64,11 +66,8 @@ export default {
   },
   async asyncData() {
     let tableData = {}
-    await getArticle().then(res => {
+    await getArticleAll().then(res => {
       tableData = res.data.data
-      tableData.forEach(item => {
-        item.createTime = formatDate(item.createTime, 'full')
-      })
     })
 
     return {tableData}
@@ -80,25 +79,25 @@ export default {
   methods: {
     init() {
       console.log(`index is running...`)
-      getArticle().then(res => {
+      getArticleAll().then(res => {
         this.tableData = res.data.data
-        this.tableData.forEach(item => {
-          item.createTime = formatDate(item.createTime, 'full')
-        })
       })
     },
     add() {
       console.log('add')
-      this.$router.push({path: '/admin/article/createArticle'})
+      this.$router.push({name: 'admin-article-articleId', params: {articleId: 0}})
     },
     query() {
       console.log('query')
     },
-    removeArticle(articleId) {
-      deleteArticle(articleId).then(res => {
+    removeArticle(row) {
+      deleteArticle(row.id).then(res => {
         this.$message.success(res.data.msg)
         this.init()
       })
+    },
+    detailArticle(row) {
+      this.$router.push({name: 'admin-article-articleId', params: {articleId: row.id}})
     }
   }
 }

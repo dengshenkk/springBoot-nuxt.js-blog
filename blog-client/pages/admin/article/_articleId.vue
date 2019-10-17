@@ -20,7 +20,7 @@
             <el-option
                 v-for="(categoryItem, categoryIndex) of categoryList"
                 :key="categoryIndex"
-                :lable="categoryItem.categoryName"
+                :label="categoryItem.categoryName"
                 :value="categoryItem.categoryType">
             </el-option>
           </el-select>
@@ -46,7 +46,7 @@
 import DHandleBar from '../../../components/d-handleBar'
 import DBtnBar from '../../../components/d-btnBar'
 import {getCategoryList} from '../../../api/category'
-import {createArticle} from '../../../api/article'
+import {createArticle, getArticleById, updateArticle} from '../../../api/article'
 
 /**
  * create by    dengShen
@@ -64,8 +64,7 @@ export default {
   data() {
     return {
       routeQuery: this.$route.query,
-
-      categoryList: [],
+      test: '',
       isTopList: [{
         value: 1,
         label: '是'
@@ -82,10 +81,18 @@ export default {
       }
     }
   },
-  async asyncData() {
-    let {data} = await getCategoryList()
-    console.log(data)
-    return {categoryList: data.data}
+  async asyncData({app}) {
+    let categoryList = await getCategoryList()
+    let article = {}
+    let status = 'create'
+    if (app.context.params.articleId) {
+      status = 'update'
+      article = await getArticleById(app.context.params.articleId)
+    }
+    console.log(categoryList.data.data)
+    console.log(article.data.data)
+    return {categoryList: categoryList.data.data, article: article.data.data, status}
+
   },
   created() {
   },
@@ -100,11 +107,24 @@ export default {
       this.$router.go(-1)
     },
     submit() {
-      console.log(this.article)
-      createArticle(this.article).then(res => {
-        this.$message.success(res.data.msg)
-        this.back()
+      this.categoryList.forEach(item => {
+        if (item.categoryName === this.article.categoryName) {
+          this.article.categoryType = item.categoryType
+        }
       })
+      if (this.status === 'update') {
+        updateArticle(this.article).then(res => {
+          this.$message.success(res.data.msg)
+          this.back()
+        })
+      } else {
+        createArticle(this.article).then(res => {
+          this.$message.success(res.data.msg)
+          this.back()
+        })
+      }
+
+
     }
   }
 }

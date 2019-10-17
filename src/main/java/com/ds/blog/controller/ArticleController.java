@@ -26,6 +26,7 @@ public class ArticleController {
     // TODO 自动装配编辑器推荐方式
     // TODO 1. 声明变量
     private final ArticleServiceImpl articleService;
+    private Article article;
 
     // TODO 2. 构造函数注入
     @Autowired
@@ -57,7 +58,7 @@ public class ArticleController {
     }
 
     @PostMapping("/updateArticle")
-    public ResultVO updateArticle(Article article) {
+    public ResultVO updateArticle(@RequestBody Article article) {
 
         try {
             Article article1 = articleService.updateArticle(article);

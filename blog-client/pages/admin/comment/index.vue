@@ -49,9 +49,9 @@
       <el-table-column align="center"
                        prop="createTime"
                        label="创建时间"
-                       width="100">
+                       width="140">
         <template slot-scope="scoped">
-          <div> {{scoped.row.createTime}}</div>
+          <div> {{scoped.row.createTime | filterData('full')}}</div>
         </template>
       </el-table-column>
       <el-table-column align="center"
@@ -114,11 +114,12 @@
 import {formatDate} from '../../../utils/dateUtil'
 import {deleteCommentById, getComment, updateComment} from '../../../api/comment'
 import DHandleBar from '../../../components/d-handleBar'
+import DLoading from '../../../components/d-loading'
 
 export default {
   layout: 'admin',
   name: 'index',
-  components: {DHandleBar},
+  components: {DLoading, DHandleBar},
   props: {},
   computed: {},
   data() {

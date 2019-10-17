@@ -17,6 +17,9 @@
       <el-table-column align="center"
                        prop="createTime"
                        label="创建时间">
+        <template slot-scope="scoped">
+          <div> {{scoped.row.createTime | filterData('full')}}</div>
+        </template>
       </el-table-column>
       <el-table-column align="center"
                        prop=""
@@ -51,7 +54,6 @@
  * createTime   2019/10/14 21:09:42
  */
 import {createCategory, getCategoryList, removeCategory, updateCategory} from '../../../api/category'
-import {formatDate} from '../../../utils/dateUtil'
 import DHandleBar from '../../../components/d-handleBar'
 
 export default {
@@ -75,9 +77,6 @@ export default {
     await getCategoryList().then(res => {
       tableData = res.data.data
     })
-    tableData.forEach(item => {
-      item.createTime = formatDate(item.createTime, 'full')
-    })
     return {tableData}
   },
   created() {
@@ -90,9 +89,6 @@ export default {
       console.log(`index is running...`)
       await getCategoryList().then(res => {
         this.tableData = res.data.data
-      })
-      this.tableData.forEach(item => {
-        item.createTime = formatDate(item.createTime, 'full')
       })
     },
     async submit() {
