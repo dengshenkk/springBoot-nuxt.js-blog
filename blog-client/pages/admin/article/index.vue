@@ -51,7 +51,7 @@
  * createTime   2019/10/14 21:09:42
  */
 import {deleteArticle, getArticleAll} from '../../../api/article'
-import DHandleBar from '../../../components/d-handleBar'
+import DHandleBar from '../../../components/admin/d-handleBar'
 
 export default {
   layout: 'admin',

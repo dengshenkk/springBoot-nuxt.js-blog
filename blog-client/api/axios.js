@@ -10,7 +10,6 @@ http.interceptors.request.use(req => {
 })
 http.interceptors.response.use(res => {
   if (res.data.code === '200') {
-    console.log(res.data)
     return res
   } else {
     Message.error(res.data.msg)

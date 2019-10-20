@@ -113,8 +113,8 @@
  */
 import {formatDate} from '../../../utils/dateUtil'
 import {deleteCommentById, getComment, updateComment} from '../../../api/comment'
-import DHandleBar from '../../../components/d-handleBar'
-import DLoading from '../../../components/d-loading'
+import DHandleBar from '../../../components/admin/d-handleBar'
+import DLoading from '../../../components/admin/d-loading'
 
 export default {
   layout: 'admin',

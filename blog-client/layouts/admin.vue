@@ -19,8 +19,8 @@
   </div>
 </template>
 <script>
-import DNav from '../components/d-nav'
-import DLoading from '../components/d-loading'
+import DNav from '../components/admin/d-nav'
+import DLoading from '../components/admin/d-loading'
 
 export default {
   components: {DLoading, DNav},

@@ -29,10 +29,15 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.5);
+    /*background-color: rgba(0, 0, 0, 0.2);*/
+    -webkit-transition: all 2s;
+    -moz-transition: all 2s;
+    -ms-transition: all 2s;
+    -o-transition: all 2s;
+    transition: all 2s;
+    overflow: hidden;
 
-
-    $d: 40vmin;
+    $d: 20vmin;
     $line: linear-gradient(90deg, transparent 50%, transparent 0) 0/ 2em .25em repeat-x;
 
     .bagua {
@@ -104,7 +109,7 @@ export default {
       }
       20% {
         transform: rotate(72deg);
-        box-shadow: 0 0 50px red;
+        box-shadow: 0 0 500px red;
       }
       30% {
         transform: rotate(108deg)
@@ -114,7 +119,7 @@ export default {
       }
       50% {
         transform: rotate(180deg);
-        box-shadow: 0 0 50px green;
+        box-shadow: 0 0 500px green;
       }
       60% {
         transform: rotate(216deg)
@@ -124,14 +129,14 @@ export default {
       }
       80% {
         transform: rotate(288deg);
-        box-shadow: 0 0 50px purple;
+        box-shadow: 0 0 500px purple;
       }
       90% {
         transform: rotate(324deg)
       }
       100% {
         transform: rotate(360deg);
-        box-shadow: 0 0 50px yellow;
+        box-shadow: 0 0 500px yellow;
       }
     }
   }

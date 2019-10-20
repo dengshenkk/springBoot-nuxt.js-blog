@@ -54,7 +54,7 @@
  * createTime   2019/10/14 21:09:42
  */
 import {createCategory, getCategoryList, removeCategory, updateCategory} from '../../../api/category'
-import DHandleBar from '../../../components/d-handleBar'
+import DHandleBar from '../../../components/admin/d-handleBar'
 
 export default {
   layout: 'admin',

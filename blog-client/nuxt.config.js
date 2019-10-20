@@ -1,5 +1,14 @@
 // import 'element-ui/lib/theme-chalk/index.css'
 module.exports = {
+
+  dev: {
+    /**
+     * Source Maps
+     */
+    // https://webpack.js.org/configuration/devtool/#development
+    // devtool: 'cheap-module-eval-source-map',
+    devtool: 'source-map'
+  },
   /*
   ** Headers of the page
   */

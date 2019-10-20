@@ -43,8 +43,8 @@
 </template>
 
 <script>
-import DHandleBar from '../../../components/d-handleBar'
-import DBtnBar from '../../../components/d-btnBar'
+import DHandleBar from '../../../components/admin/d-handleBar'
+import DBtnBar from '../../../components/admin/d-btnBar'
 import {getCategoryList} from '../../../api/category'
 import {createArticle, getArticleById, updateArticle} from '../../../api/article'
 
