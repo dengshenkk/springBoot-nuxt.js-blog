@@ -1,6 +1,10 @@
 import {formatDate} from '../utils/dateUtil'
 
 let baseMixin = {
+  data() {
+    return {
+    }
+  },
   filters: {
     filterData(value, type) {
       return formatDate(value, type)
