@@ -4,11 +4,4 @@ import mavonEditor from 'mavon-editor'
 //                 or
 //                 mavonEditor.markdownIt
 import 'mavon-editor/dist/css/index.css'
-
-
-
-
-// import other plugin
-import  './element-ui'
-import baseMixin from './mixin'
-Vue.mixin(baseMixin)
+Vue.use(mavonEditor)

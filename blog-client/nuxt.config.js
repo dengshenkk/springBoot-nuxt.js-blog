@@ -43,7 +43,7 @@ module.exports = {
   */
   loading: {color: '#3B8070'},
 
-  plugins: [{src: '~/plugins/index', ssr: false}],
+  plugins: [{src: '~/plugins/index', ssr: true}, {src: '~/plugins/nossr', ssr: false}],
   /*
   ** Build configuration
   */

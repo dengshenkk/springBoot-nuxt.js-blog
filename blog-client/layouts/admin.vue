@@ -29,7 +29,7 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$store.state.loading)
+    console.log('layout')
   }
 }
 </script>
