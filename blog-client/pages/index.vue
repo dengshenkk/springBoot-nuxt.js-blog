@@ -136,7 +136,7 @@ export default {
           position: relative;
 
           &:hover {
-            box-shadow: (0 0px 30px #fff);
+            box-shadow: (0 0px 10px #fff);
             transition: all 1s;
             transform: scale(1.1, 1.1);
             filter: none;
