@@ -81,17 +81,22 @@ export default {
       }
     }
   },
-  async asyncData({app}) {
+  async asyncData({params}) {
     let categoryList = await getCategoryList()
-    let article = {}
-    let status = 'create'
-    if (app.context.params.articleId) {
-      status = 'update'
-      article = await getArticleById(app.context.params.articleId)
+    let article = {
+      title: '',
+      categoryType: '',
+      content: '',
+      isTop: ''
     }
-    console.log(categoryList.data.data)
-    console.log(article.data.data)
-    return {categoryList: categoryList.data.data, article: article.data.data, status}
+    let status = 'create'
+    console.log(params)
+    if (params.articleId !== 0) {
+      status = 'update'
+      let result = await getArticleById(params.articleId)
+      article = result.data.data
+    }
+    return {categoryList: categoryList.data.data, article: article, status}
 
   },
   created() {
