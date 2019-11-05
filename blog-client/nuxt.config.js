@@ -1,6 +1,8 @@
 // import 'element-ui/lib/theme-chalk/index.css'
 module.exports = {
-
+  env: {
+    api: process.env.NODE_ENV === 'development'? 'http://localhost:9999': 'http://34.80.255.76:9999'
+  },
   dev: {
     /**
      * Source Maps

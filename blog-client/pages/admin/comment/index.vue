@@ -51,7 +51,7 @@
                        label="创建时间"
                        width="140">
         <template slot-scope="scoped">
-          <div> {{scoped.row.createTime | filterData('full')}}</div>
+          <div> {{scoped.row.createTime | filterDate('full')}}</div>
         </template>
       </el-table-column>
       <el-table-column align="center"

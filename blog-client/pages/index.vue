@@ -12,13 +12,16 @@
                  :key="index">
           <div class="blog-head">
             {{article.title}}
-            <sub>{{article.subtitle}}/{{article.createTime | filterData('full') }}</sub>
+            <sub>{{article.subtitle}} / {{article.createTime | filterDate('full')}}</sub>
           </div>
           <div class="blog-content" v-html="article.content"></div>
-          <div class="blog-mark" @click="articleDetail(article)">
-            <div class="mark"></div>
-            <span class="text">详细</span>
-          </div>
+          <nuxt-link :to="{name: 'blog-id', params: {id: article.id}}">
+            <div class="blog-mark" >
+              <!--@click="articleDetail(article)"-->
+              <div class="mark"></div>
+              <span class="text">详细</span>
+            </div>
+          </nuxt-link>
         </article>
       </div>
 
@@ -59,8 +62,6 @@ export default {
   },
   methods: {
     init() {
-      console.log(`123index is running...`)
-      console.log(this.articles)
       this.$nextTick(() => {
         setTimeout(() => {
           this.loading = false
@@ -72,7 +73,6 @@ export default {
     },
     mouseOver(article, index) {
       article.isHover = true
-      console.log(article)
     },
     mouseOut(article, index) {
       article.isHover = true
@@ -134,6 +134,19 @@ export default {
           padding: 24px;
           border: 1px solid #fff;
           position: relative;
+          .blog-head {
+            display: flex;
+            align-items: center;
+            height: 44px;
+            font-size: 24px;
+            font-weight: bold;
+            sub {
+              margin-left: 12px;
+              font-size: 14px;
+              font-weight: normal;
+              color: #f2f2f2;
+            }
+          }
 
           &:hover {
             box-shadow: (0 0px 10px #fff);

@@ -25,7 +25,6 @@ export default {
   },
   methods: {
     init() {
-      console.log(`blog is running...`)
     }
   }
 }

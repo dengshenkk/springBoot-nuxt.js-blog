@@ -6,7 +6,7 @@ let baseMixin = {
     }
   },
   filters: {
-    filterData(value, type) {
+    filterDate(value, type) {
       return formatDate(value, type)
     },
     capitalize: function (value) {

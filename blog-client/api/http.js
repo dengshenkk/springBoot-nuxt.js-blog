@@ -1,8 +1,9 @@
 import Axios from 'axios'
 import {Message} from 'element-ui'
 
+console.log('请求地址', process.env.api)
 const http = Axios.create({
-  baseURL: 'http://localhost:9999'
+  baseURL: process.env.api
 })
 http.interceptors.request.use(req => {
   req.headers['Content-Type'] = 'application/json; charset=UTF-8'
